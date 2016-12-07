@@ -1,0 +1,7 @@
+module "ecs_on_spotfleet" {
+  source = "github.com/wata727/tf_aws_ecs_on_spotfleet"
+
+  vpc      = "<%= config[:vpc_id] %>"
+  subnets  = ["<%= config[:subnet_ids][0] %>", "<%= config[:subnet_ids][1] %>"]
+  key_name = "<%= config[:key_name] %>"
+}
