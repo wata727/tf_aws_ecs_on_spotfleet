@@ -59,9 +59,10 @@ variable "memory" {
 
 // Customize for spot fleet options
 
-variable "spot_price" {
+variable "spot_prices" {
   description = "Bid amount to spot fleet"
-  default     = 0.03
+  type        = "list"
+  default     = ["0.03", "0.03"]
 }
 
 variable "strategy" {
