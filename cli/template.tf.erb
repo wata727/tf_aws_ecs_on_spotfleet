@@ -5,3 +5,7 @@ module "ecs_on_spotfleet" {
   subnets  = ["<%= config[:subnet_ids][0] %>", "<%= config[:subnet_ids][1] %>"]
   key_name = "<%= config[:key_name] %>"
 }
+
+output "endpoint" {
+  value = "${module.ecs_on_spotfleet.endpoint}"
+}
