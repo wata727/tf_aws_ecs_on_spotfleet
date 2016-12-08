@@ -67,7 +67,7 @@ variable "spot_prices" {
 
 variable "strategy" {
   description = "Instance placement strategy name"
-  default     = "lowestPrice"
+  default     = "diversified"
 }
 
 variable "instance_count" {
