@@ -1,5 +1,5 @@
 resource "aws_security_group" "ecs_alb" {
-  description = "Balancer for ${app_name}"
+  description = "Balancer for ${var.app_name}"
 
   vpc_id = "${var.vpc}"
   name   = "${var.app_name}-alb-sg"
