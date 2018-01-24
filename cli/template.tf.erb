@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "${var.region}"
+  region = "<%= config[:region] %>"
 }
 
 module "ecs_on_spotfleet" {

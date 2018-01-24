@@ -13,13 +13,6 @@ variable "key_name" {
   description = "Name of key pair for SSH login to ECS cluster instances"
 }
 
-// If you use other than us-east-1, need to change the following:
-
-variable "region" {
-  description = "Region for ECS cluster"
-  default     = "us-east-1"
-}
-
 variable "ami" {
   description = "ECS cluster instance AMI id, default is Amazon ECS-optimized AMI in us-east-1"
   default     = "ami-eca289fb"
