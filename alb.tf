@@ -19,17 +19,21 @@ resource "aws_security_group" "ecs_alb" {
   }
 }
 
+resource "aws_alb" "main" {
+  name            = "${var.app_name}"
+  subnets         = "${var.subnets}"
+  security_groups = ["${aws_security_group.ecs_alb.id}"]
+}
+
 resource "aws_alb_target_group" "main" {
   name     = "${var.app_name}"
   port     = "${var.app_port}"
   protocol = "HTTP"
   vpc_id   = "${var.vpc}"
-}
 
-resource "aws_alb" "main" {
-  name            = "${var.app_name}"
-  subnets         = "${var.subnets}"
-  security_groups = ["${aws_security_group.ecs_alb.id}"]
+  depends_on = [
+    "aws_alb.main"
+  ]
 }
 
 resource "aws_alb_listener" "main" {
