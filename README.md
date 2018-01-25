@@ -9,7 +9,7 @@ The outline is as following:
 - Invoked containers support dynamic port mapping by ALB.
 
 ## Quick Start
-By using the bundled ruby ​​script, you can try ECS on Spot Fleet fastest.
+By using the bundled ruby script, you can try ECS on Spot Fleet fastest.
 
 ```
 $ git clone https://github.com/wata727/tf_aws_ecs_on_spotfleet.git
@@ -17,7 +17,7 @@ $ cd tf_aws_ecs_on_spotfleet/cli
 $ bundle install
 $ ruby wizard.rb generate
       create template.tf
-$ terraform get
+$ terraform init
 $ terraform apply
 ```
 
@@ -36,7 +36,6 @@ $ terraform destroy
 - `key_name` - Name of key pair for SSH login to ECS cluster instances
 
 **Optional**
-- `region` - Region for ECS cluster, default is `us-east-1`
 - `ami` - ECS cluster instance AMI id, default is Amazon ECS-optimized AMI in `us-east-1`
 - `app_name` - Your application name, default is `demo-app`
 - `image` - Your docker image name, default it ECS PHP Simple App
@@ -55,7 +54,11 @@ $ terraform destroy
 ## Usage
 Like other modules, you can easily start ECS cluster by adding this module to your template with required parameters.
 
-```
+```hcl
+provider "aws" {
+  region = "us-east-1"
+}
+
 module "ecs_on_spotfleet" {
   source = "github.com/wata727/tf_aws_ecs_on_spotfleet"
 
