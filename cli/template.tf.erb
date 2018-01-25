@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "<%= config[:region] %>"
+}
+
 module "ecs_on_spotfleet" {
   source = "github.com/wata727/tf_aws_ecs_on_spotfleet"
 

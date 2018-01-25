@@ -6,7 +6,8 @@ class Wizard < Thor
 
   desc 'wizard generate', 'generate template for quick start'
   def generate
-    client = Aws::EC2::Client.new(region: 'us-east-1')
+    region = 'us-east-1'
+    client = Aws::EC2::Client.new(region: region)
     ec2 = Aws::EC2::Resource.new(client: client)
 
     default_vpc_id = ec2.vpcs(filters: [{ name: 'isDefault', values: [true.to_s] }]).first.id
@@ -24,7 +25,7 @@ class Wizard < Thor
       spot_infos << { subnet: subnet.id, price: res.spot_price_history.first.spot_price }
     end
 
-    template 'template.tf.erb', 'template.tf', { vpc_id: default_vpc_id, spot_infos: spot_infos, key_name: key.name }
+    template 'template.tf.erb', 'template.tf', { region: region, vpc_id: default_vpc_id, spot_infos: spot_infos, key_name: key.name }
   end
 
   desc 'wizard g', 'alias for wizard generate'
