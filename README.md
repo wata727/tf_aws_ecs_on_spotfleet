@@ -84,7 +84,7 @@ output "endpoint" {
 
 ## Customize
 
-This module does not support https protocol, even more instance pools, etc. Do you want them? This module is very simple, please remodel and create your own module.
+This module is very simple, please remodel and create your own module.
 
 ## Author
 
