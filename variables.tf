@@ -25,11 +25,6 @@ variable "app_name" {
   default     = "demo-app"
 }
 
-variable "plain_http" {
-  description = "Listen over plain http"
-  default     = true
-}
-
 variable "https" {
   description = "Listen over https"
   default     = false

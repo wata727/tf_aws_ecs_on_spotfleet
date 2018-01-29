@@ -53,7 +53,6 @@ $ terraform destroy
 * `instance_count` - Number of instances, default is 3
 * `instance_type` - Instance type launched by Spot Fleet. default is `m3.medium`
 * `volume_size` - Root volume size, default is 16
-* `plain_http` - Whether the load balancer should listen to plain http requests, default is `true`
 * `https` - Whether the load balancer should listen to https requests, default is `false`
 * `app_certificate_arn` - The ARN of the ssl certificate, default is empty
 * `app_ssl_policy` - The ssl policy, default is `ELBSecurityPolicy-2015-05`

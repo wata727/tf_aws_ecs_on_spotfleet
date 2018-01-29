@@ -51,7 +51,7 @@ resource "aws_alb_listener" "https" {
 }
 
 resource "aws_alb_listener" "http" {
-  count             = "${var.plain_http ? 1 : 0}"
+  count             = "${var.https ? 0 : 1}"
   load_balancer_arn = "${aws_alb.main.id}"
   port              = "80"
   protocol          = "HTTP"
