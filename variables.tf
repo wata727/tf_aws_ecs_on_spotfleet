@@ -25,6 +25,21 @@ variable "app_name" {
   default     = "demo-app"
 }
 
+variable "https" {
+  description = "Listen over https"
+  default     = false
+}
+
+variable "app_certificate_arn" {
+  description = "SSL cert ARN"
+  default     = ""
+}
+
+variable "app_ssl_policy" {
+  description = "SSL Policy"
+  default     = "ELBSecurityPolicy-2015-05"
+}
+
 variable "image" {
   description = "Your docker image name, default it ECS PHP Simple App"
   default     = "wata727/ecs-demo-php-simple-app:latest"

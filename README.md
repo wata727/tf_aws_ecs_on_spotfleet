@@ -1,14 +1,16 @@
 # Amazon ECS on Spot Fleet Terraform module
+
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 A terraform module for create ECS on Spot Fleet. This is a demo repository.
 The outline is as following:
 
-- Bid on Spot Fleet and launch instances that spans two AZs.
-- Started instances constitute an ECS cluster.
-- Invoked containers support dynamic port mapping by ALB.
+* Bid on Spot Fleet and launch instances that spans two AZs.
+* Started instances constitute an ECS cluster.
+* Invoked containers support dynamic port mapping by ALB.
 
 ## Quick Start
+
 By using the bundled ruby script, you can try ECS on Spot Fleet fastest.
 
 ```
@@ -30,28 +32,34 @@ $ terraform destroy
 ```
 
 ## Module Input Variables
+
 **Required**
-- `vpc` - VPC id for ECS cluster
-- `subnets` - List of subnet ids for ECS cluster, please choose 2 subnets
-- `key_name` - Name of key pair for SSH login to ECS cluster instances
+
+* `vpc` - VPC id for ECS cluster
+* `subnets` - List of subnet ids for ECS cluster, please choose 2 subnets
+* `key_name` - Name of key pair for SSH login to ECS cluster instances
 
 **Optional**
-- `ami` - ECS cluster instance AMI id, default is Amazon ECS-optimized AMI in `us-east-1`
-- `app_name` - Your application name, default is `demo-app`
-- `image` - Your docker image name, default it ECS PHP Simple App
-- `container_port` - Port number exposed by container, default is 80
-- `service_count` - Number of containers, default is 3
-- `cpu_unit` - Number of cpu_units for container, default is 128
-- `memory` - Number of memory for container, default is 128
-- `spot_prices` - Bid amount to spot fleet, please choose 2 prices. Default is `$0.03`
-- `strategy` - Instance placement strategy name, default is `diversified`
-- `instance_count` - Number of instances, default is 3
-- `instance_type` - Instance type launched by Spot Fleet, default is `m3.medium`
-- `volume_size` - Root volume size, default is 16
-- `app_port` - Port number of application, default is 80
-- `valid_until` - limit of Spot Fleet request, default is `2020-12-15T00:00:00Z`
+
+* `ami` - ECS cluster instance AMI id, default is Amazon ECS-optimized AMI in `us-east-1`
+* `app_name` - Your application name, default is `demo-app`
+* `image` - Your docker image name, default it ECS PHP Simple App
+* `container_port` - Port number exposed by container, default is 80
+* `service_count` - Number of containers, default is 3
+* `cpu_unit` - Number of cpu_units for container, default is 128
+* `memory` - Number of memory for container, default is 128
+* `spot_prices` - Bid amount to spot fleet, please choose 2 prices, default is `$0.03`
+* `strategy` - Instance placement strategy name, default is `diversified`
+* `instance_count` - Number of instances, default is 3
+* `instance_type` - Instance type launched by Spot Fleet. default is `m3.medium`
+* `volume_size` - Root volume size, default is 16
+* `https` - Whether the load balancer should listen to https requests, default is `false`
+* `app_certificate_arn` - The ARN of the ssl certificate, default is empty
+* `app_ssl_policy` - The ssl policy, default is `ELBSecurityPolicy-2015-05`
+* `valid_until` - limit of Spot Fleet request, default is `2020-12-15T00:00:00Z`
 
 ## Usage
+
 Like other modules, you can easily start ECS cluster by adding this module to your template with required parameters.
 
 ```hcl
@@ -71,11 +79,11 @@ module "ecs_on_spotfleet" {
 output "endpoint" {
   value = "${module.ecs_on_spotfleet.endpoint}"
 }
-
 ```
 
 ## Customize
-This module does not support https protocol, even more instance pools, etc. Do you want them? This module is very simple, please remodel and create your own module.
+
+This module is very simple, please remodel and create your own module.
 
 ## Author
 
