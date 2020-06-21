@@ -1,6 +1,6 @@
-resource "aws_iam_policy_attachment" "ecs_service" {
+resource "aws_iam_role_policy_attachment" "ecs_service" {
   name       = "${var.app_name}-ecs-service"
-  roles      = ["${aws_iam_role.ecs_service.name}"]
+  role      = "${aws_iam_role.ecs_service.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole"
 }
 
